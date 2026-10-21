@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pommes de ciel</title>
+<meta name="description" content="Pommes de ciel publishes raw, interior writing: five writers, one piece each, printed as small A6 books and published here in full.">
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html{background:#ffffff}
+body{margin:0;background:#ffffff;color:#111111;font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:12px;line-height:1.4;letter-spacing:-0.04em}
+a{color:#111111;text-decoration:none;text-underline-offset:3px}
+a:hover{color:#6a6a6a}
+p{margin:0 0 18px}
+.layout{display:grid;grid-template-columns:180px minmax(0,1fr) minmax(0,360px);gap:36px 44px;padding:28px 28px 88px;align-items:start}
+.col-l,.col-m,.col-r{min-width:0}
+.logo{display:block;margin:0 0 40px}
+.logo img{display:block;width:118px;height:auto}
+.navgrp{margin-bottom:20px}
+.navgrp a{display:block;padding:1px 0;min-height:20px}
+.navgrp a.active{text-decoration:underline}
+.col-m{display:flex;flex-direction:column;gap:52px}
+figure{margin:0}
+.ph{width:100%;aspect-ratio:3/2;background:#e5e5e5}
+figcaption{margin-top:10px}
+figcaption span{display:block}
+.head{margin-bottom:52px}
+.cta{text-decoration:underline}
+[hidden]{display:none!important}
+@media (max-width:1100px){.layout{grid-template-columns:180px minmax(0,1fr)}.col-r{grid-column:2;max-width:520px}}
+@media (max-width:700px){.layout{grid-template-columns:minmax(0,1fr);gap:28px;padding:20px 16px 64px}.col-r{grid-column:1}.logo{margin-bottom:18px}nav{display:flex;flex-wrap:wrap;gap:4px 28px}.navgrp{display:flex;flex-wrap:wrap;gap:0 16px;margin-bottom:0}}
+</style>
+</head>
+<body>
+<div class="layout">
+
+<aside class="col-l">
+<a class="logo" href="#" aria-label="Pommes de ciel, home"><img src="logo.png" alt="Pommes de ciel"></a>
+<nav aria-label="Main">
+<div class="navgrp">
+<a href="#" data-link="home" id="home-link">Home</a>
+<a href="#archive" data-link="archive">Archive</a>
+<a href="#about" data-link="about">About</a>
+<a href="#submit" data-link="submit">Submit</a>
+</div>
+<div class="navgrp">
+<a href="#">Instagram</a>
+<a href="mailto:[EMAIL]">Contact</a>
+</div>
+</nav>
+</aside>
+
+<main class="col-m">
+<figure data-view="home archive">
+<div class="ph"></div>
+<figcaption><i>No. 01</i>, coming soon<span>Print edition, A6</span><span>Five writers, one piece each</span></figcaption>
+</figure>
+<figure data-view="about submit">
+<div class="ph"></div>
+<figcaption>Image coming soon</figcaption>
+</figure>
+</main>
+
+<section class="col-r" aria-label="Text">
+
+<div data-view="home">
+<p class="head">No. 01 — coming soon</p>
+<p>The first edition of Pommes de ciel is being gathered now: five writers, one piece each, printed as a small A6 book and published here in full.</p>
+<p>Submissions are open.</p>
+<a class="cta" href="#submit">Submit your work →</a>
+</div>
+
+<div data-view="archive">
+<p class="head">Archive</p>
+<p>Every edition will live here, each one readable in full. The first, No. 01, is coming soon.</p>
+</div>
+
+<div data-view="about">
+<p class="head">About</p>
+<p>Pommes de ciel publishes raw, interior writing: unfiltered, stream of consciousness, sometimes fiction. Not the carefully crafted story, but the thing as it arrives, edited only enough to keep it alive.</p>
+<p>Each edition gathers five writers, one piece each. Editions are printed as small A6 books and published here in full.</p>
+<p>The name turns <i>pommes de terre</i>, apples of the earth, toward the sky.</p>
+<p>Edited by Kristil Rabideau. [CITY].</p>
+</div>
+
+<div data-view="submit">
+<p class="head">Submit</p>
+<p>Submissions are open for No. 01. Five writers will be chosen, one piece each.</p>
+<p>Send one piece of no more than [WORD LIMIT] words. We publish writing that reads as if it came out in one breath, then was cut and shaped with care. Fiction is welcome when it feels this personal. English or French.</p>
+<p>The first edition is being gathered now. Be part of it.</p>
+<p>Send your work to <a class="cta" href="mailto:[EMAIL]">[EMAIL]</a>, titled “Pommes de ciel Submission.”</p>
+</div>
+
+</section>
+</div>
+
+<script>
+(function () {
+  var views = ['home', 'archive', 'about', 'submit'];
+  function render() {
+    var v = location.hash.replace('#', '');
+    if (views.indexOf(v) === -1) v = 'home';
+    document.querySelectorAll('[data-view]').forEach(function (el) {
+      el.hidden = el.getAttribute('data-view').split(' ').indexOf(v) === -1;
+    });
+    document.querySelectorAll('[data-link]').forEach(function (el) {
+      el.classList.toggle('active', el.getAttribute('data-link') === v && v !== 'home');
+    });
+    document.getElementById('home-link').hidden = v === 'home';
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener('hashchange', render);
+  render();
+})();
+</script>
+</body>
+</html>
